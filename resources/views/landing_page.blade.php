@@ -34,7 +34,7 @@
                 <a class="nav-link nav-menu" href="#agenda">Agenda</a>
               </li>
             </ul>
-            <button type="button" class="btn-login">Login</button>
+            <button type="button" class="btn-login"><a class="btn-href" href="{{ route('loginPage') }}">Login</a></button>
           </div>
         </div>
       </nav>
@@ -46,7 +46,7 @@
           <div class="col-xl-7">
             <h1 class="title-home">SIKAT</h1>
             <p class="desc-home">Here at flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
-            <button type="button" class="btn-login">Login</button>
+            <button type="button" class="btn-login"><a class="btn-href" href="{{ route('loginPage') }}">Login</a></button>
           </div>
           <div class="col-xl-5">
             <img class="img-home" src="{{ asset('img/amico.png') }}" alt="">

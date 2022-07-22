@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/landing', function () {
     return view('landing_page');
-});
+})->name('landingPage');
+
+Route::get('LoginPage', [LoginController::class, 'index'])->name('loginPage');
+Route::get('ForgotPassword', [LoginController::class, 'forgot'])->name('forgot');
 
 Route::middleware([
     'auth:sanctum',
