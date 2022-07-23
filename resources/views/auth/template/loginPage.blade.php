@@ -13,12 +13,13 @@
               <div class="card-header"><a href="{{ route('landingPage') }}" title="Kembali"><img src="{{ asset('img/back.png') }}" alt=""></a>&nbsp;&nbsp;<h4 style="font-weight: 700; font-size: 24px; color: #064E3B">SIKAT - Login</h4></div>
 
               <div class="card-body">
-                <form method="POST" action="#" class="needs-validation" novalidate="">
+                <form method="POST" action="{{ route('login') }}" class="needs-validation @error("email") was-validated @enderror" novalidate="">
+                  @csrf
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Please fill in your email
+                      E-mail anda tidak dikenal
                     </div>
                   </div>
 
@@ -33,7 +34,7 @@
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                     <div class="invalid-feedback">
-                      please fill in your password
+                      Password anda tidak dikenal
                     </div>
                   </div>
 
@@ -54,4 +55,9 @@
 @endsection
 @push('titlePages')
     {{$titlePage}}
+@endpush
+@push('js')
+    <script>
+
+    </script>
 @endpush
