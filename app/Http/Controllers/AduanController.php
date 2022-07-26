@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aduan;
 use Illuminate\Http\Request;
+use Session;
 
 class AduanController extends Controller
 {
@@ -14,7 +15,7 @@ class AduanController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

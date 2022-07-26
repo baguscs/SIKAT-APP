@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
     @stack('css')
+
+    <link rel="stylesheet" href="{{ asset('assets/modules/prism/prism.css') }}">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
@@ -89,7 +91,6 @@
                 </div>
             </li>
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->warga->nama_warga }}</div></a>
                 <div class="dropdown-menu dropdown-menu-right">
                 <a href="features-settings.html" class="dropdown-item has-icon">
@@ -118,11 +119,11 @@
                         <a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
                     </li>
                     <li class="menu-header">Menu</li>
-                    <li class="dropdown">
+                    <li class="dropdown @stack('agenda') @stack('addAgenda')">
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-alt"></i> <span>Agenda</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="features-activities.html">List Agenda</a></li>
-                            <li><a class="nav-link" href="features-post-create.html">Tambah Agenda</a></li>
+                            <li class="@stack('agenda')"><a class="nav-link" href="{{ route('agenda.index') }}">List Agenda</a></li>
+                            <li class="@stack('addAgenda')"><a class="nav-link" href="{{ route('agenda.create') }}">Tambah Agenda</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -156,7 +157,9 @@
                 </ul>
             </aside>
         </div>
-        @yield('content')
+        <div class="main-wrapper main-wrapper-1">
+            @yield('content')
+        </div>
         @include('template.component.footer')
     </div>
 
@@ -184,7 +187,7 @@
         </div>
       </div>
     
-    @stack('js')
+   
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/modules/popper.js') }}"></script>
@@ -193,9 +196,18 @@
     <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/stisla.js') }}"></script>
+
+    @stack('js')
+
+     <!-- JS Libraies -->
+     <script src="{{ asset('assets/modules/prism/prism.js') }}"></script>
+
+     <!-- Page Specific JS File -->
+     <script src="{{ asset('assets/js/page/bootstrap-modal.js') }}"></script>
     
     <!-- Template JS File -->
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+      
 </body>
 </html>

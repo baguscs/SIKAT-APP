@@ -9,8 +9,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $titlePage = "Login";
-        return view('auth.login', compact('titlePage'));
+        return view('auth.login');
     }
 
     public function forgot()
