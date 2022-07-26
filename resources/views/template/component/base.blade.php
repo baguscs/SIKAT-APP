@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@stack('titlePages')</title>
 
     <link rel="icon" href="{{ asset('img/icon.png') }}">
@@ -126,11 +127,11 @@
                             <li class="@stack('addAgenda')"><a class="nav-link" href="{{ route('agenda.create') }}">Tambah Agenda</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown @stack('aduan') @stack('addAduan')">
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-file-alt"></i> <span>Aduan</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="features-activities.html">List Aduan</a></li>
-                            <li><a class="nav-link" href="features-post-create.html">Tambah Aduan</a></li>
+                            <li class="@stack('aduan')"><a class="nav-link" href="{{ route('aduan.index') }}">List Aduan</a></li>
+                            <li class="@stack('addAduan')"><a class="nav-link" href="{{ route('aduan.create') }}">Tambah Aduan</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

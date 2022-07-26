@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agenda extends Model
 {
     use HasFactory;
+    protected $table = "agendas";
     protected $fillable = [
         'users_id', 'judul', 'isi', 'tanggal_mulai', 'tanggal_selesai', 'waktu_mulai', 'waktu_selesai', 'tempat', 'status'
     ];

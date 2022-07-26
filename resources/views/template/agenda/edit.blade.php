@@ -120,6 +120,9 @@
 @push('titlePages')
     {{$titlePage}}
 @endpush
+@push('agenda')
+    {{$navigation}}
+@endpush
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/timepicker.min.css') }}">
 @endpush

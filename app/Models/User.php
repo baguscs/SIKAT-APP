@@ -68,4 +68,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Warga::class, 'wargas_id');
     }
+
+    /**
+     * Get the user associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function aduan()
+    {
+        return $this->hasOne(Aduan::class);
+    }
 }

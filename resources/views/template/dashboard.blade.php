@@ -32,7 +32,7 @@
                                 <h4>Total Aduan</h4>
                             </div>
                             <div class="card-body">
-                                32
+                                {{ $totalAduan }}
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <div class="card-header">
                             <h4>Aduan Terbaru</h4>
                             <div class="card-header-action">
-                                <a href="" class="btn btn-success">Lihat Semua</a>
+                                <a href="{{ route('aduan.index') }}" class="btn btn-success">Lihat Semua</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -73,24 +73,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td><a href="javasrcipt:void(0);" class="btn btn-warning btn-rounded">Perlu Direview</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td><a href="javasrcipt:void(0);" class="btn btn-success btn-rounded">Ditanggapi</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td><a href="javasrcipt:void(0);" class="btn btn-danger btn-rounded">Ditolak</a></td>
-                                    </tr>
+                                    @foreach ($aduan as $item)
+                                        <tr>
+                                            <td>{{ $item->judul }}</td>
+                                            <td>{{ $item->isi }}</td>
+                                            <td>{{ $item->user->warga->nama_warga }}</td>
+                                            <td>
+                                                @if ($item->status == 'ditinjau')
+                                                    <a href="javasrcipt:void(0);" class="btn btn-warning btn-rounded">Perlu Direview</a>
+                                                @else
+                                                    <a href="javasrcipt:void(0);" class="btn btn-success btn-rounded">Telah Ditanggapi</a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

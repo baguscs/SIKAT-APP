@@ -18,9 +18,8 @@ class AgendaController extends Controller
     {
         $titlePage = "Agenda";
         $navigation = "active";
-        $dataAgenda = Agenda::all();    
-        $total = Agenda::count();
-        return view('template.agenda.index', compact('titlePage', 'navigation', 'dataAgenda', 'total'));
+        $dataAgenda = Agenda::all();
+        return view('template.agenda.index', compact('titlePage', 'navigation', 'dataAgenda'));
     }
 
     /**
@@ -58,7 +57,7 @@ class AgendaController extends Controller
         $new = Agenda::create($request->all());
 
         Session::flash('success', 'Berhasil Menambah Agenda');
-        return redirect()->route('listAgenda');
+        return redirect()->route('agenda.index');
     }
 
     /**
@@ -81,7 +80,8 @@ class AgendaController extends Controller
     public function edit(Agenda $agenda)
     {
         $titlePage = "Edit Agenda";
-        return view('template.agenda.edit', compact('agenda', 'titlePage'));
+        $navigation = "active";
+        return view('template.agenda.edit', compact('agenda', 'titlePage', 'navigation'));
     }
 
     /**
