@@ -52,6 +52,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
+                                    <label for="">Bukti Aduan</label>
                                     <div class="input-group mb-3">
                                       <input type="text" value="{{ $aduan->bukti }}" class="form-control" placeholder="" aria-label="" readonly>
                                       <div class="input-group-append">
@@ -60,25 +61,34 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label class="d-block">Apakah Aduan ini layak untuk ditampilkan?</label>
-                                    <div class="form-check">
-                                      <input class="form-check-input review" type="radio" name="radio_review" value="ya" id="review1" data-name="ya" required>
-                                      <label class="form-check-label" for="review1">
-                                        Ya, Layak
-                                      </label>
-                                    </div>
-                                    <div class="form-check">
-                                      <input class="form-check-input review" type="radio" name="radio_review" value="tidak" id="review2" data-name="tidak">
-                                      <label class="form-check-label" for="review2">
-                                        Tidak
-                                      </label>
+                            @if ($aduan->status == 'ditinjau')
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label class="d-block">Apakah Aduan ini layak untuk ditampilkan?</label>
+                                        <div class="form-check">
+                                        <input class="form-check-input review" type="radio" name="radio_review" value="ya" id="review1" data-name="ya" required>
+                                        <label class="form-check-label" for="review1">
+                                            Ya, Layak
+                                        </label>
+                                        </div>
+                                        <div class="form-check">
+                                        <input class="form-check-input review" type="radio" name="radio_review" value="tidak" id="review2" data-name="tidak">
+                                        <label class="form-check-label" for="review2">
+                                            Tidak
+                                        </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                @else
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label class="d-block">Status Aduan</label>
+                                            <input type="text" class="form-control" value="{{ $aduan->status }}" readonly>
+                                        </div>
+                                    </div>
+                            @endif
                         </div>
-                        <div class="form-group form-radio">
+                        <div class="form-group form-tanggapan">
                             <label class="d-block">Apakah anda ingin menanggapi aduan ini?</label>
                             <div class="form-check">
                               <input class="form-check-input tanggapan" type="radio" value="ya" name="tanggapan" id="tanggapan1" data-name="ya">
@@ -93,7 +103,7 @@
                               </label>
                             </div>
                         </div>
-                        <div class="content-tanggapan form-tanggapan">
+                        <div class="content-tanggapan @if ( $aduan->status == 'ditanggapi') form-tanggapan  @endif">
                             <div class="card-header">
                                 <h4>Form Tanggapan Aduan</h4>
                                 </div>
@@ -123,7 +133,13 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                      <button type="submit" id="btn-submit" name="" value="" class="btn btn-primary">Submit</button>
+                        @if ($aduan->status == 'ditinjau')
+                            <button type="submit" id="btn-submit" name="" value="" class="btn btn-primary">Submit</button>
+                            @elseif ($aduan->status == 'diterima')    
+                                <button type="submit" id="btn-submit" name="tanggapi" value="tanggapi" class="btn btn-primary">Submit</button>
+                            @else
+                                <a href="{{ route('aduan.index') }}" class="btn btn-info">Kembali</a>
+                        @endif
                     </div>
                 </form>
             </div>

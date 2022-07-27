@@ -43,14 +43,20 @@
                                                             <div class="badge badge-warning">Perlu Direview</div>
                                                             @elseif($item->status == 'diterima')
                                                                 <div class="badge badge-info">Tunggu Tanggapan</div>
-                                                            @else
+                                                            @elseif($item->status == 'ditanggapi')
                                                                 <div class="badge badge-success">Telah Ditanggapi</div>
+                                                            @else
+                                                                <div class="badge badge-danger">Ditolak</div>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('aduan.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
-                                                        <a href="{{ route('aduan.review', $item->id) }}" class="btn btn-warning" title="Tinjau"><span class="ion-eye"></span></a>
-                                                        <a class="btn btn-primary" href="" title="Detail"><i class="ion-ios-information-outline"></i></a>    
+                                                        @if ($item->status == 'ditinjau' && $item->users_id == Auth::user()->id)
+                                                            <a href="{{ route('aduan.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
+                                                        @elseif( Auth::user()->jabatan->nama_jabatan == 'Super Admin' || Auth::user()->jabatan->nama_jabatan == 'Admin')
+                                                            <a href="{{ route('aduan.review', $item->id) }}" class="btn btn-warning" title="Tinjau"><span class="ion-eye"></span></a>
+                                                        @else
+                                                        @endif
+                                                        <a class="btn btn-primary" href="" title="Detail"><i class="ion-ios-information-outline"></i></a>        
                                                     </td>
                                                 </tr>
                                             @endforeach

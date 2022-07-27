@@ -78,4 +78,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Aduan::class);
     }
+
+    /**
+     * Get the jabatan that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function jabatan()
+    {
+        return $this->belongsTo(Jabatan::class, 'jabatans_id');
+    }
 }
