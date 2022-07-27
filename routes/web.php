@@ -37,4 +37,5 @@ Route::middleware([
     Route::resource('aduan', AduanController::class);
     Route::get('aduan/{id}/review', [AduanController::class, 'review'])->name('aduan.review');
     Route::post('aduan/{id}/review/post', [AduanController::class, 'respond'])->name('aduan.respond');
+    Route::get('aduanku', [AduanController::class, 'mypost'])->name('aduan.mypost');
 });

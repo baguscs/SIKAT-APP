@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aduan;
+use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Image;
 
@@ -20,7 +22,13 @@ class AduanController extends Controller
     {
         $titlePage = "Aduan";
         $navigation = "active";
-        $dataAduan = Aduan::all(); 
+        if (Auth::user()->jabatan->nama_jabatan == 'Super Admin' || Auth::user()->jabatan->nama_jabatan == 'Admin') {
+            $dataAduan = Aduan::all(); 
+        } 
+        else {
+            $dataAduan = Aduan::where('status', '!=', 'ditolak')->get(); 
+        }
+        
         return view('template.aduan.index', compact('titlePage', 'navigation', 'dataAduan'));
     }
 
@@ -61,7 +69,8 @@ class AduanController extends Controller
             'judul' => $request->judul,
             'isi' => $request->isi,
             'bukti' => $filename,
-            'status' => 'ditinjau'
+            'status' => 'ditinjau',
+            'created_at' => date('Y-m-d H:i:s')
         ]);
 
         Session::flash('success', 'Berhasil Menambah Aduan');
@@ -76,7 +85,10 @@ class AduanController extends Controller
      */
     public function show(Aduan $aduan)
     {
-        //
+        $titlePage = "Detail Aduan";
+        $navigation = "active";
+        $tanggapan = Tanggapan::where('aduans_id', $aduan->id)->get();
+        return view('template.aduan.detail', compact('aduan', 'titlePage', 'navigation', 'tanggapan'));
     }
 
     /**
@@ -87,7 +99,7 @@ class AduanController extends Controller
      */
     public function edit(Aduan $aduan)
     {
-        $titlePage = "Edit Agenda";
+        $titlePage = "Edit Aduan";
         $navigation = "active";
         return view('template.aduan.edit', compact('aduan', 'titlePage', 'navigation'));
     }
@@ -196,5 +208,13 @@ class AduanController extends Controller
         
         Session::flash('success', 'Berhasil Mereview Aduan');
         return redirect()->route('aduan.index');
+    }
+
+    public function mypost()
+    {
+        $titlePage = "Aduan Ku";
+        $navigation = "active";
+        $dataAduan = Aduan::where('users_id', Auth::user()->id)->get();
+        return view('template.aduan.mypost', compact('titlePage', 'navigation', 'dataAduan'));
     }
 }

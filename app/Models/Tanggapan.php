@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Tanggapan extends Model
 {
     use HasFactory;
+
+    /**
+     * Get the user that owns the Tanggapan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }

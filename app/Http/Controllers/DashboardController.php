@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aduan;
+use App\Models\Agenda;
 
 class DashboardController extends Controller
 {
@@ -13,6 +14,7 @@ class DashboardController extends Controller
         $navigation = 'active';
         $totalAduan = Aduan::count();
         $aduan = Aduan::orderBy('created_at', 'desc')->limit(5)->get();
-        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan'));
+        $agenda = Agenda::orderBy('created_at', 'desc')->limit(5)->get();
+        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan', 'agenda'));
     }
 }

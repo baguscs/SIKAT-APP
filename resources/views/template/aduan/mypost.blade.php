@@ -8,7 +8,8 @@
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
                     <div class="breadcrumb-item"><a href="javascript:void(0);">Aduan</a></div>
-                    <div class="breadcrumb-item">List Aduan</div>
+                    <div class="breadcrumb-item"><a href="{{ route('aduan.index') }}">List Aduan</a></div>
+                    <div class="breadcrumb-item">Aduan Ku</div>
                 </div>
             </div>
             {{-- edit content --}}
@@ -19,7 +20,7 @@
                             <div class="card-header">
                                 <h4>Data Aduan</h4>
                                 <a href="{{ route('aduan.create') }}" class="btn btn-primary btn-add">Tambah Aduan</a>
-                                <a href="{{ route('aduan.mypost') }}" class="btn btn-info btn-add">Lihat Aduan Ku</a>
+                                <a href="{{ route('aduan.index') }}" class="btn btn-info btn-add">Lihat List Aduan</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -57,7 +58,7 @@
                                                             <a href="{{ route('aduan.review', $item->id) }}" class="btn btn-warning" title="Tinjau"><span class="ion-eye"></span></a>
                                                         @else
                                                         @endif
-                                                        <a class="btn btn-primary" href="{{ route('aduan.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>        
+                                                        <a class="btn btn-primary" href="" title="Detail"><i class="ion-ios-information-outline"></i></a>        
                                                     </td>
                                                 </tr>
                                             @endforeach

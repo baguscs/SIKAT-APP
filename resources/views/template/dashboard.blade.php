@@ -59,7 +59,7 @@
                         <div class="card-header">
                             <h4>Aduan Terbaru</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('aduan.index') }}" class="btn btn-success">Lihat Semua</a>
+                                <a href="{{ route('aduan.index') }}" class="btn btn-primary">Lihat Semua</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -99,35 +99,21 @@
                         </div>
                         <div class="card-body">             
                             <ul class="list-unstyled list-unstyled-border">
-                                <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-1.png" alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right text-primary">Now</div>
-                                    <div class="media-title">Farhan A Mujib</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                                </li>
-                                <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-1.png" alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right text-primary">Now</div>
-                                    <div class="media-title">Farhan A Mujib</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                                </li>
-                                <li class="media">
-                                <img class="mr-3 rounded-circle" width="50" src="assets/img/avatar/avatar-1.png" alt="avatar">
-                                <div class="media-body">
-                                    <div class="float-right text-primary">Now</div>
-                                    <div class="media-title">Farhan A Mujib</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                                </div>
-                                </li>
-                                
+                                @foreach ($agenda as $list)
+                                    <li class="media">
+                                        <div class="media-body">
+                                            <div class="float-right text-primary">{{ date('d M, Y', strtotime($list->created_at)) }}</div>
+                                            <div class="media-title">{{ $list->judul }}</div>
+                                            <span class="text-small text-muted">
+                                                {!! Str::words($list->isi, 30, '...') !!}
+                                            </span>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                             <div class="text-center pt-1 pb-1">
-                                <a href="#" class="btn btn-primary btn-lg btn-round">
-                                View All
+                                <a href="{{ route('agenda.index') }}" class="btn btn-primary btn-lg btn-round">
+                                Lihat Semua
                                 </a>
                             </div>
                         </div>
