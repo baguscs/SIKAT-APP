@@ -41,14 +41,15 @@
                                                     <td>
                                                         @if ($item->status == 'ditinjau')
                                                             <div class="badge badge-warning">Perlu Direview</div>
-                                                         @else
-                                                            <div class="badge badge-success">Telah Ditanggapi</div>
+                                                            @elseif($item->status == 'diterima')
+                                                                <div class="badge badge-info">Tunggu Tanggapan</div>
+                                                            @else
+                                                                <div class="badge badge-success">Telah Ditanggapi</div>
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($item->users_id == Auth::user()->id && $item->status == 'ditinjau')
-                                                            <a href="{{ route('aduan.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
-                                                        @endif
+                                                        <a href="{{ route('aduan.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
+                                                        <a href="{{ route('aduan.review', $item->id) }}" class="btn btn-warning" title="Tinjau"><span class="ion-eye"></span></a>
                                                         <a class="btn btn-primary" href="" title="Detail"><i class="ion-ios-information-outline"></i></a>    
                                                     </td>
                                                 </tr>

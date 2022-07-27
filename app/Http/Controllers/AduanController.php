@@ -116,7 +116,8 @@ class AduanController extends Controller
             $destroy = public_path().'\\storage\\aduan\\'. $oldFile;
             unlink($destroy);
 
-            DB::table('aduans')->update([
+            DB::table('aduans')->where('id', $aduan->id)
+            ->update([
                 'users_id' => $request->users_id,
                 'judul' => $request->judul,
                 'isi' => $request->isi,
@@ -126,7 +127,8 @@ class AduanController extends Controller
         }
 
         else{
-            DB::table('aduans')->update([
+            DB::table('aduans')->where('id', $aduan->id)
+            ->update([
                 'users_id' => $request->users_id,
                 'judul' => $request->judul,
                 'isi' => $request->isi,
@@ -147,5 +149,52 @@ class AduanController extends Controller
     public function destroy(Aduan $aduan)
     {
         
+    }
+
+    public function review($id)
+    {
+        $titlePage = "Review Agenda";
+        $navigation = "active";
+        $aduan = Aduan::find($id);
+        return view('template.aduan.review', compact('titlePage', 'navigation', 'aduan'));
+    }
+
+    public function respond(Request $request)
+    {
+        if ($request->has('tanggapi')) {
+            $validatedData = $request->validate([
+                'bukti' => 'image|mimes:jpg,png,jpeg|max:1000',
+            ]);
+
+            $file = $request->file('bukti');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('storage/tanggapan/', $filename);
+
+            DB::table('tanggapans')->insert([
+                'aduans_id' => $request->aduans_id,
+                'users_id' => $request->users_id,
+                'isi' => $request->isi,
+                'bukti' => $filename
+            ]);
+
+            DB::table('aduans')->where('id', $request->id)->update([
+                'status' => 'ditanggapi'
+            ]);
+            
+        } else {
+            if ($request->radio_review == 'ya') {
+                DB::table('aduans')->where('id', $request->id)->update([
+                    'status' => 'diterima'
+                ]);
+            } else {
+                DB::table('aduans')->where('id', $request->id)->update([
+                    'status' => 'ditolak'
+                ]);
+            }
+        }
+        
+        Session::flash('success', 'Berhasil Mereview Aduan');
+        return redirect()->route('aduan.index');
     }
 }

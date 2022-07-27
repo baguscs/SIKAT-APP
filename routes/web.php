@@ -33,5 +33,8 @@ Route::middleware([
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('agenda', AgendaController::class);
+
     Route::resource('aduan', AduanController::class);
+    Route::get('aduan/{id}/review', [AduanController::class, 'review'])->name('aduan.review');
+    Route::post('aduan/{id}/review/post', [AduanController::class, 'respond'])->name('aduan.respond');
 });
