@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AduanController;
+use App\Http\Controllers\DanaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,6 @@ Route::middleware([
     Route::get('aduan/{id}/review', [AduanController::class, 'review'])->name('aduan.review');
     Route::post('aduan/{id}/review/post', [AduanController::class, 'respond'])->name('aduan.respond');
     Route::get('aduanku', [AduanController::class, 'mypost'])->name('aduan.mypost');
+
+    Route::resource('dana', DanaController::class);
 });

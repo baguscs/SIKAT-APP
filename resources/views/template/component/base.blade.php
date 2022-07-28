@@ -134,11 +134,11 @@
                             <li class="@stack('addAduan')"><a class="nav-link" href="{{ route('aduan.create') }}">Tambah Aduan</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown  @stack('dana') @stack('addDana')">
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-wallet"></i> <span>Pendanaan</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="features-activities.html">List Pendanaan</a></li>
-                            <li><a class="nav-link" href="features-post-create.html">Tambah Pendanaan</a></li>
+                            <li class="@stack('dana')"><a class="nav-link" href="{{ route('dana.index') }}">List Pendanaan</a></li>
+                            <li class=" @stack('addDana')"><a class="nav-link" href="{{ route('dana.create') }}">Tambah Pendanaan</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

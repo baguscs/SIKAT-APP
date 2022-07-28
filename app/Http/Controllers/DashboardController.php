@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Aduan;
 use App\Models\Agenda;
+use App\Models\Dana;
 
 class DashboardController extends Controller
 {
@@ -15,6 +16,17 @@ class DashboardController extends Controller
         $totalAduan = Aduan::count();
         $aduan = Aduan::orderBy('created_at', 'desc')->limit(5)->get();
         $agenda = Agenda::where('status', '!=', 'arsip')->orderBy('created_at', 'desc')->limit(5)->get();
-        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan', 'agenda'));
+        $income = Dana::where('kategori', 'Pemasukan')->get();
+        $inflow = 0;
+        foreach ($income as $value) {
+            $inflow += $value->total;
+        }
+
+        $spending = Dana::where('kategori', 'Pengeluaran')->get();
+        $outlay = 0;
+        foreach ($spending as $item) {
+            $outlay += $item->total;
+        }
+        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan', 'agenda', 'inflow', 'outlay'));
     }
 }

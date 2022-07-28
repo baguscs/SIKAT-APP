@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete();
             $table->string('kategori');
+            $table->string('rincian');
             $table->string('bukti_nota');
             $table->date('tanggal_transaksi');
             $table->string('total');

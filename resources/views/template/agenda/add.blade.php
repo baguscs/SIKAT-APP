@@ -98,7 +98,7 @@
                         </div>
                         <div class="form-group">
                             <label>Status Agenda</label>
-                            <select class="form-control required" name="status">
+                            <select class="form-control required" name="status" required>
                                 <option selected disabled hidden value="">Silahkan Pilih</option>
                                 <option value="arsip">Arsip</option>
                                 <option value="segera">Segera</option>

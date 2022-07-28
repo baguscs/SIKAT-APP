@@ -17,7 +17,7 @@
                                 <h4>Total Dana</h4>
                             </div>
                             <div class="card-body">
-                                Rp. 50.000.000
+                                Rp. {{number_format($inflow-$outlay,0,',','.')}}
                             </div>
                         </div>
                     </div>
