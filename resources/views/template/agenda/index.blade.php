@@ -18,7 +18,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Data Agenda</h4>
-                                <a href="{{ route('agenda.create') }}" class="btn btn-primary btn-add">Tambah Agenda</a>
+                                @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
+                                    <a href="{{ route('agenda.create') }}" class="btn btn-primary btn-add">Tambah Agenda</a>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -51,11 +53,15 @@
                                                     </td>
                                                     <td>
                                                         <form action="{{ route('agenda.destroy', $item->id) }}" method="POST">
-                                                            <a href="{{ route('agenda.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
+                                                            @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
+                                                                <a href="{{ route('agenda.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
 
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger show_confirm" data-name="{{ $item->judul }}" data-toggle="toolip"><i class="ion-trash-a"></i></button>    
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger show_confirm" data-name="{{ $item->judul }}" data-toggle="toolip"><i class="ion-trash-a"></i></button>
+                                                                @else
+                                                                @endif
+                                                                <a class="btn btn-primary" href="{{ route('agenda.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>
                                                         </form>   
                                                     </td>
                                                 </tr>

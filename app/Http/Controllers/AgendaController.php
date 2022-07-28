@@ -18,7 +18,12 @@ class AgendaController extends Controller
     {
         $titlePage = "Agenda";
         $navigation = "active";
-        $dataAgenda = Agenda::all();
+        if (Auth::user()->jabatan->nama_jabatan == 'Super Admin') {
+            $dataAgenda = Agenda::all();
+        } else {
+            $dataAgenda = Agenda::where('status', '!=', 'arsip')->get();
+        }
+        
         return view('template.agenda.index', compact('titlePage', 'navigation', 'dataAgenda'));
     }
 
@@ -68,7 +73,9 @@ class AgendaController extends Controller
      */
     public function show(Agenda $agenda)
     {
-        //
+        $titlePage = "Edit Agenda";
+        $navigation = "active";
+        return view('template.agenda.detail', compact('agenda', 'titlePage', 'navigation'));
     }
 
     /**

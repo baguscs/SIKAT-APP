@@ -124,7 +124,9 @@
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar-alt"></i> <span>Agenda</span></a>
                         <ul class="dropdown-menu">
                             <li class="@stack('agenda')"><a class="nav-link" href="{{ route('agenda.index') }}">List Agenda</a></li>
-                            <li class="@stack('addAgenda')"><a class="nav-link" href="{{ route('agenda.create') }}">Tambah Agenda</a></li>
+                            @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
+                                <li class="@stack('addAgenda')"><a class="nav-link" href="{{ route('agenda.create') }}">Tambah Agenda</a></li>
+                            @endif
                         </ul>
                     </li>
                     <li class="dropdown @stack('aduan') @stack('addAduan')">
@@ -138,7 +140,9 @@
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-wallet"></i> <span>Pendanaan</span></a>
                         <ul class="dropdown-menu">
                             <li class="@stack('dana')"><a class="nav-link" href="{{ route('dana.index') }}">List Pendanaan</a></li>
-                            <li class=" @stack('addDana')"><a class="nav-link" href="{{ route('dana.create') }}">Tambah Pendanaan</a></li>
+                            @if (Auth::user()->jabatan->nama_jabatan == 'Bendahara')
+                                <li class=" @stack('addDana')"><a class="nav-link" href="{{ route('dana.create') }}">Tambah Pendanaan</a></li>
+                            @endif
                         </ul>
                     </li>
                     <li class="dropdown">

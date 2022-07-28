@@ -18,7 +18,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Data Dana</h4>
-                                <a href="{{ route('dana.create') }}" class="btn btn-primary btn-add">Tambah Dana</a>
+                                @if (Auth::user()->jabatan->nama_jabatan == 'Bendahara')
+                                    <a href="{{ route('dana.create') }}" class="btn btn-primary btn-add">Tambah Dana</a>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -41,10 +43,14 @@
                                                     <td>Rp. {{number_format($item->total,2,',','.')}}</td>
                                                     <td>
                                                         <form action="{{ route('dana.destroy', $item->id) }}" method="POST">
-                                                            <a href="{{ route('dana.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger show_confirm" data-name=" {{ date('d M, Y', strtotime($item->tanggal_transaksi)) }} " data-toggle="toolip"><i class="ion-trash-a"></i></button>    
+                                                            @if (Auth::user()->jabatan->nama_jabatan == 'Bendahara')
+                                                                <a href="{{ route('dana.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger show_confirm" data-name=" {{ date('d M, Y', strtotime($item->tanggal_transaksi)) }} " data-toggle="toolip"><i class="ion-trash-a"></i></button>    
+                                                            @else
+                                                                <a class="btn btn-primary" href="{{ route('dana.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>
+                                                            @endif
                                                         </form>   
                                                     </td>
                                                 </tr>

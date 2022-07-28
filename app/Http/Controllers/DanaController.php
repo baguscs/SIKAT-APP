@@ -90,7 +90,9 @@ class DanaController extends Controller
      */
     public function show(Dana $dana)
     {
-        
+        $titlePage = "Detail Dana";
+        $navigation = "active";
+        return view('template.dana.detail', compact('dana', 'titlePage', 'navigation'));
     }
 
     /**
