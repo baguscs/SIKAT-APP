@@ -27,6 +27,7 @@ class WargaSeeder extends Seeder
             'agama' => 'islam',
             'jenis_kelamin' => 'pria',
             'pekerjaan' => 'none',
+            'akun' => 'none'
         ]);
     }
 }

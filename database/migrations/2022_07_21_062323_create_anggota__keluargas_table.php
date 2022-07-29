@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('anggota__keluargas', function (Blueprint $table) {
+        Schema::create('anggota_keluargas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('wargas_id')->constrained()->cascadeOnDelete();
             $table->bigInteger('nik')->unique();
@@ -21,10 +21,9 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('tempat_lahir');
             $table->string('status_hubungan');
-            $table->string('alamat');
             $table->string('no_telp');
-            $table->enum('agama', ['islam', 'kristen', 'katolik', 'hindu', 'buddha']);
-            $table->enum('jenis_kelamin', ['pria', 'wanita']);
+            $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha']);
+            $table->enum('jenis_kelamin', ['Pria', 'Wanita']);
             $table->string('pekerjaan');
             $table->timestamps();
         });

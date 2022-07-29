@@ -145,18 +145,18 @@
                             @endif
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown @stack('warga') @stack('addWarga')">
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Data Warga</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="features-activities.html">List Warga</a></li>
-                            <li><a class="nav-link" href="features-post-create.html">Tambah Warga</a></li>
+                            <li class="@stack('warga')"><a class="nav-link" href="{{ route('warga.index') }}">List Warga</a></li>
+                            <li class="@stack('addWarga')"><a class="nav-link" href="{{ route('warga.create') }}">Tambah Warga</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown @stack('user') @stack('addUser')">
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i> <span>Data Pengguna</span></a>
                         <ul class="dropdown-menu">
-                            <li><a class="nav-link" href="features-activities.html">List Pengguna</a></li>
-                            <li><a class="nav-link" href="features-post-create.html">Tambah Pengguna</a></li>
+                            <li class="@stack('user')"><a class="nav-link" href="{{ route('users.index') }}">List Pengguna</a></li>
+                            <li class="@stack('addUser')"><a class="nav-link" href="{{ route('users.create') }}">Tambah Pengguna</a></li>
                         </ul>
                     </li>
                 </ul>

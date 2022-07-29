@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->foreignId('jabatans_id')->constrained()->cascadeOnDelete();
             $table->foreignId('wargas_id')->constrained()->cascadeOnDelete();
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -106,7 +106,7 @@
                         <div class="content-tanggapan @if ( $aduan->status == 'ditanggapi') form-tanggapan  @endif">
                             <div class="card-header">
                                 <h4>Form Tanggapan Aduan</h4>
-                                </div>
+                            </div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <input type="text" hidden name="users_id" value="{{ Auth::user()->id }}">

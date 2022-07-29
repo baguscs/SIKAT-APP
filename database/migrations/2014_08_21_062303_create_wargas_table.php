@@ -23,9 +23,10 @@ return new class extends Migration
             $table->bigInteger('no_kk')->unique();
             $table->string('alamat');
             $table->string('no_telp');
-            $table->enum('agama', ['islam', 'kristen', 'katolik', 'hindu', 'buddha']);
-            $table->enum('jenis_kelamin', ['pria', 'wanita']);
+            $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha']);
+            $table->enum('jenis_kelamin', ['Pria', 'Wanita']);
             $table->string('pekerjaan');
+            $table->string('akun');
             $table->timestamps();
         });
     }

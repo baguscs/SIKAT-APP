@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Warga;
+use App\Models\Anggota_Keluarga;
 use Illuminate\Http\Request;
+use Session;
+
 
 class WargaController extends Controller
 {
@@ -14,7 +17,10 @@ class WargaController extends Controller
      */
     public function index()
     {
-        //
+        $titlePage = "Warga";
+        $navigation = "active";
+        $dataWarga = Warga::all();
+        return view('template.warga.index', compact('titlePage', 'navigation', 'dataWarga'));
     }
 
     /**
@@ -24,7 +30,9 @@ class WargaController extends Controller
      */
     public function create()
     {
-        //
+        $titlePage = "Tambah Warga";
+        $navigation = "active";
+        return view('template.warga.add', compact('titlePage', 'navigation'));
     }
 
     /**
@@ -35,7 +43,25 @@ class WargaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'nama_warga' => 'required',
+            'nik' => 'required|unique:wargas',
+            'tanggal_lahir' => 'required',
+            'tempat_lahir' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'status_perkawinan' => 'required',
+            'no_kk' => 'required|unique:wargas',
+            'akun' => 'required',
+        ]);
+
+        $post = Warga::create($request->all());
+
+        Session::flash('success', 'Berhasil Menambah Warga');
+        return redirect()->route('warga.index');
     }
 
     /**
@@ -57,7 +83,9 @@ class WargaController extends Controller
      */
     public function edit(Warga $warga)
     {
-        //
+        $titlePage = "Edit Warga";
+        $navigation = "active";
+        return view('template.warga.edit', compact('titlePage', 'navigation', 'warga'));
     }
 
     /**
@@ -69,7 +97,20 @@ class WargaController extends Controller
      */
     public function update(Request $request, Warga $warga)
     {
-        //
+        $oldValue = Warga::find($warga->id);
+        if ($oldValue->nik != $request->nik) {
+            $validation = $request->validate([
+                'nik' => 'required|unique:wargas',
+            ]);
+        } else if($oldValue->no_kk != $request->no_kk){
+            $validation = $request->validate([
+                'no_kk' => 'required|unique:wargas',
+            ]);
+        }
+        
+        $warga->update($request->all());
+        Session::flash('success', 'Berhasil Mengedit Warga');
+        return redirect()->route('warga.index');
     }
 
     /**
@@ -81,5 +122,48 @@ class WargaController extends Controller
     public function destroy(Warga $warga)
     {
         //
+    }
+
+    public function family($id)
+    {
+        $titlePage = "Tambah Anggota Keluarga";
+        $navigation = "active";
+        $warga = Warga::find($id);
+
+        return view('template.warga.family', compact('titlePage', 'navigation', 'warga'));
+    }
+
+    public function postFamily(Request $request)
+    {
+        // dd($request);
+        $validation = $request->validate([
+            'wargas_id' => 'required',
+            'nama_warga' => 'required',
+            'nik' => 'required|unique:anggota_keluargas',
+            'tanggal_lahir' => 'required',
+            'status_hubungan' => 'required',
+            'tempat_lahir' => 'required',
+            'no_telp' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+        ]);
+
+        $family = new Anggota_Keluarga;
+        $family->wargas_id = $request->wargas_id;
+        $family->nama_warga = $request->nama_warga;
+        $family->nik = $request->nik;
+        $family->tanggal_lahir = $request->tanggal_lahir;
+        $family->tempat_lahir = $request->tempat_lahir;
+        $family->status_hubungan = $request->status_hubungan;
+        $family->no_telp = $request->no_telp;
+        $family->agama = $request->agama;
+        $family->jenis_kelamin = $request->jenis_kelamin;
+        $family->pekerjaan = $request->pekerjaan;
+
+        $family->save();
+        
+        Session::flash('success', 'Berhasil Menambah Anggota Keluarga');
+        return redirect()->route('warga.index');
     }
 }
