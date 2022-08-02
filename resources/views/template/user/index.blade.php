@@ -18,9 +18,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Data Pengguna</h4>
-                                {{-- @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin') --}}
+                                @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
                                     <a href="{{ route('users.create') }}" class="btn btn-primary btn-add">Tambah Pengguna</a>
-                                {{-- @endif --}}
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -48,16 +48,14 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <form action="{{ route('agenda.destroy', $item->id) }}" method="POST">
+                                                        <form action="{{ route('users.destroy', $item->id) }}" method="POST">
                                                             @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
-                                                                <a href="{{ route('agenda.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
+                                                                <a href="{{ route('users.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
 
                                                                 @csrf
                                                                 @method('DELETE')
-                                                                <button type="submit" class="btn btn-danger show_confirm" data-name="{{ $item->judul }}" data-toggle="toolip"><i class="ion-trash-a"></i></button>
-                                                                @else
+                                                                <button type="submit" class="btn btn-danger show_confirm" data-name="{{ $item->warga->nama_warga }}" data-toggle="toolip"><i class="ion-trash-a"></i></button>
                                                                 @endif
-                                                                <a class="btn btn-primary" href="{{ route('agenda.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>
                                                         </form>   
                                                     </td>
                                                 </tr>
@@ -127,8 +125,8 @@
           var judul = $(this).attr('data-name');
           event.preventDefault();
           swal({
-              title: `Apakah anda yakin ingin menghapus agenda `+judul+ ' ?',
-              text: "Jika anda hapus, data agenda "+judul+" akan hilang permanen",
+              title: `Apakah anda yakin ingin menghapus akun `+judul+ ' ?',
+              text: "Jika anda hapus, data pengguna "+judul+" akan hilang permanen",
               icon: "warning",
               buttons: true,
               dangerMode: true,

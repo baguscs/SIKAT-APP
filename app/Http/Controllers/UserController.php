@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Warga;
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
@@ -20,7 +21,7 @@ class UserController extends Controller
     {
         $titlePage = "Pengguna";
         $navigation = "active";
-        $dataUser = User::all();
+        $dataUser = User::where('id', '!=', Auth::user()->id);
         return view('template.user.index', compact('titlePage', 'navigation', 'dataUser'));
     }
 
@@ -33,7 +34,7 @@ class UserController extends Controller
     {
         $titlePage = "Tambah Pengguna";
         $navigation = "active";
-        $dataWarga = Warga::where('akun', '!=', 'terdaftar')->get();
+        $dataWarga = Warga::where('akun', 'no')->get();
         $dataJabatan = Jabatan::all();
         return view('template.user.add', compact('titlePage', 'navigation', 'dataWarga', 'dataJabatan'));
     }
@@ -46,7 +47,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'email' => 'unique:users',
+        ]);
+
+        $post = new User;
+
+        $post->email = $request->email;
+        $post->password = Hash::make($request->password);
+        $post->jabatans_id = $request->jabatans_id;
+        $post->wargas_id = $request->wargas_id;
+        $post->status = "aktif";
+
+        $post->save();
+
+        $edit = Warga::where('id', $request->wargas_id)->firstOrFail();
+
+        $edit->akun = "terdaftar";
+
+        $edit->save();
+
+        Session::flash('success', 'Berhasil Menambah Akun Pengguna');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -66,9 +88,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $titlePage = "Edit Pengguna";
+        $navigation = "active";
+        $dataWarga = Warga::where('akun', 'terdaftar')->get();
+        $dataJabatan = Jabatan::all();
+        return view('template.user.edit', compact('titlePage', 'navigation', 'user', 'dataWarga', 'dataJabatan'));
     }
 
     /**
@@ -80,7 +106,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = User::where('id', $id)->firstOrFail();
+
+        if ($update->email != $request->email) {
+            $validation = $request->validate([
+                'email' => 'unique:users',
+            ]);
+        }
+
+        $update->email = $request->email;
+        $update->jabatans_id = $request->jabatans_id;
+        $update->wargas_id = $request->wargas_id;
+        $update->status = $request->status;
+
+        $update->save();
+
+        Session::flash('success', 'Berhasil Mengedit Akun Pengguna');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -89,8 +131,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $getId = Warga::where('id', $user->wargas_id)->firstOrFail();
+
+        $getId->akun = "no";
+        $getId->save();
+
+        $user->delete();
+
+        Session::flash('success', 'Berhasil Menghapus Pengguna');
+        return redirect()->route('users.index');
     }
 }
