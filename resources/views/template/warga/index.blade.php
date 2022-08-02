@@ -18,9 +18,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Data Warga</h4>
-                                {{-- @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin') --}}
+                                @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
                                     <a href="{{ route('warga.create') }}" class="btn btn-primary btn-add">Tambah Warga</a>
-                                {{-- @endif --}}
+                                @endif
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -30,16 +30,21 @@
                                                 <th class="text-center">No.</th>
                                                 <th>Nama Warga</th>
                                                 <th>NIK</th>
+                                                <th>Anggota Keluarga</th>
                                                 <th>Akun</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>                                 
                                             @foreach ($dataWarga as $iteration => $item)
+                                            @php
+                                                $anggota = \App\Models\Anggota_Keluarga::where('wargas_id', $item->id)->count();
+                                            @endphp
                                                 <tr>
                                                     <td>{{$iteration+1}}</td>
                                                     <td>{{$item->nama_warga}}</td>
                                                     <td>{{ $item->nik }}</td>
+                                                    <td>{{ $anggota }}</td>
                                                     <td>
                                                         @if ($item->akun == 'terdaftar')
                                                             <div class="badge badge-success">Aktif</div>
@@ -48,12 +53,11 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    {{-- @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin') --}}
+                                                    @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
                                                         <a href="{{ route('warga.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
                                                         <a href="{{ route('warga.family', $item->id) }}" type="button" class="btn btn-warning" title="Tambah Anggota Keluarga"><i class="ion-plus-circled"></i></a>
-                                                        {{-- @else --}}
-                                                        {{-- @endif --}}
-                                                        <a class="btn btn-primary" href="{{ route('agenda.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>
+                                                        <a class="btn btn-primary" href="{{ route('warga.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>
+                                                    @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

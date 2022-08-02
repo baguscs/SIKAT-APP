@@ -72,7 +72,10 @@ class WargaController extends Controller
      */
     public function show(Warga $warga)
     {
-        //
+        $titlePage = "Detail Warga";
+        $navigation = "active";
+        $family = Anggota_Keluarga::where('wargas_id', $warga->id)->get();
+        return view('template.warga.detail', compact('titlePage', 'navigation', 'warga', 'family'));
     }
 
     /**
@@ -130,7 +133,7 @@ class WargaController extends Controller
         $navigation = "active";
         $warga = Warga::find($id);
 
-        return view('template.warga.family', compact('titlePage', 'navigation', 'warga'));
+        return view('template.warga.family.add', compact('titlePage', 'navigation', 'warga'));
     }
 
     public function postFamily(Request $request)

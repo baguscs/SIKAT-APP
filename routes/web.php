@@ -8,6 +8,7 @@ use App\Http\Controllers\AduanController;
 use App\Http\Controllers\DanaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WargaController;
+use App\Http\Controllers\FamilyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,6 @@ Route::middleware([
     Route::resource('warga', WargaController::class);
     Route::get('warga/{id}/anggota-keluarga', [WargaController::class, 'family'])->name('warga.family');
     Route::post('warga/anggota-keluarga/post', [WargaController::class, 'postFamily'])->name('warga.postFamily');
+
+    Route::resource('family', FamilyController::class);
 });

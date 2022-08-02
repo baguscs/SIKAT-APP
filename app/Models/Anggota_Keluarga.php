@@ -24,4 +24,14 @@ class Anggota_Keluarga extends Model
     ];
 
     protected $guarded = ['id'];
+
+    /**
+     * Get the warga that owns the Anggota_Keluarga
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class, 'wargas_id');
+    }
 }

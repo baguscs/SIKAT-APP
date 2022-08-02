@@ -36,4 +36,14 @@ class Warga extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    /**
+     * Get the anggota_keluarga associated with the Warga
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function anggota_keluarga()
+    {
+        return $this->hasOne(Anggota_Keluarga::class);
+    }
 }
