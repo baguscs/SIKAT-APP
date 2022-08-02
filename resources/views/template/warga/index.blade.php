@@ -77,7 +77,7 @@
 @push('titlePages')
     {{$titlePage}}
 @endpush
-@push('user')
+@push('warga')
     {{$navigation}}
 @endpush
 @push('css')
