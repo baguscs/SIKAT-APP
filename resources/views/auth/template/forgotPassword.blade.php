@@ -11,9 +11,31 @@
 
             <div class="card card-primary">
               <div class="card-header"><a href="{{ route('loginPage') }}" title="Kembali"><img src="{{ asset('img/back.png') }}" alt=""></a>&nbsp;&nbsp;<h4 style="font-weight: 700; font-size: 20px; color: #064E3B;"> Lupa Password</h4></div>
-
+              <div class="container">
+                @if($messege = Session::get("pesan"))
+                  <div class="alert alert-success alert-dismissible show fade">
+                      <div class="alert-body">
+                      <button class="close" data-dismiss="alert">
+                          <span>&times;</span>
+                      </button>
+                      {{ Session::get("pesan") }}
+                      </div>
+                  </div> 
+                @endif
+                @if($messege = Session::get("gagal"))
+                  <div class="alert alert-danger alert-dismissible show fade">
+                      <div class="alert-body">
+                      <button class="close" data-dismiss="alert">
+                          <span>&times;</span>
+                      </button>
+                      {{ Session::get("gagal") }}
+                      </div>
+                  </div> 
+                @endif
+              </div>
               <div class="card-body">
-                <form method="POST">
+                <form method="POST" action="{{ route('send_mail') }}">
+                  @csrf
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>

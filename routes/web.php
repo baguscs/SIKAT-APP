@@ -27,6 +27,10 @@ Route::get('/', function () {
 
 Route::get('LoginPage', [AuthController::class, 'index'])->name('loginPage');
 Route::get('ForgotPassword', [AuthController::class, 'forgot'])->name('forgot');
+Route::post('send-email', [AuthController::class, 'send_mail'])->name('send_mail');
+Route::get('form-forgot/{id}', [AuthController::class, 'form_forgot'])->name('form_forgot');
+Route::post('form-forgot/post/{id}', [AuthController::class, 'execute_forgot'])->name('execute_forgot');
+
 Route::get('LogoutSystem', [AuthController::class, 'logout'])->name('logoutSystem');
 
 Route::middleware([

@@ -6,7 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
+use App\Mail\ForgotMail;
 use Session;
+use Mail;
 
 class AuthController extends Controller
 {
@@ -19,6 +22,44 @@ class AuthController extends Controller
     {
         $titlePage = "Lupa Password";
         return view('auth.template.forgotPassword', compact('titlePage')); 
+    }
+
+    public function send_mail(Request $request)
+    {
+        $checker = User::where('email', $request->email)->first();
+        if ($checker != null) {
+            $details = [
+                'title' => 'Mail from SIKAT',
+                'body' => 'Pesan Konfirmasi Lupa Password, Abaikan pesan ini jika anda tidak membutuhkannya',
+                'id' => Crypt::encrypt($checker->id)
+            ];
+
+            Mail::to($request->email)->send(new ForgotMail($details));
+
+            return redirect()->back()->with('pesan', 'Email Reset Password berhasil terkirim');
+        } else{
+            return redirect()->back()->with('gagal', 'Email tidak ditemukan');
+        }
+        
+    }
+
+    public function form_forgot($id)
+    {
+        $parameter = Crypt::decrypt($id);
+        return view('auth.template.reset', compact('parameter'));
+    }
+
+    public function execute_forgot(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'required|confirmed'
+        ]);
+
+        $find = User::find($id);
+        $find->update([
+            'password' => Hash::make($request->input('password')),
+        ]);
+        return redirect()->back()->with('pesan', 'Password Berhasil di reset silahkan login');
     }
 
     public function logout(Request $request)
