@@ -94,7 +94,7 @@
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->warga->nama_warga }}</div></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                <a href="features-settings.html" class="dropdown-item has-icon">
+                <a href="{{ route('akun.reset') }}" class="dropdown-item has-icon">
                     <i class="fas fa-cog"></i> Ubah Password
                 </a>
                 <a href="" class="dropdown-item has-icon text-danger"  data-toggle="modal" data-target="#exampleModal">

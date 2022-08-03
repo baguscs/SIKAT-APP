@@ -52,4 +52,7 @@ Route::middleware([
     Route::post('warga/anggota-keluarga/post', [WargaController::class, 'postFamily'])->name('warga.postFamily');
 
     Route::resource('family', FamilyController::class);
+
+    Route::get('reset-password', [AuthController::class, 'reset'])->name('akun.reset');
+    Route::post('reset-password/post', [AuthController::class, 'change'])->name('akun.change');
 });
