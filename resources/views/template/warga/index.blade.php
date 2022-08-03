@@ -18,7 +18,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4>Data Warga</h4>
-                                @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
+                                @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin' || Auth::user()->jabatan->nama_jabatan == 'Admin')
                                     <a href="{{ route('warga.create') }}" class="btn btn-primary btn-add">Tambah Warga</a>
                                 @endif
                             </div>
@@ -53,7 +53,7 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                    @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin')
+                                                    @if (Auth::user()->jabatan->nama_jabatan == 'Super Admin' || Auth::user()->jabatan->nama_jabatan == 'Admin')
                                                         <a href="{{ route('warga.edit', $item->id) }}" class="btn btn-info" title="Edit"><span class="ion-edit"></span></a>
                                                         <a href="{{ route('warga.family', $item->id) }}" type="button" class="btn btn-warning" title="Tambah Anggota Keluarga"><i class="ion-plus-circled"></i></a>
                                                         <a class="btn btn-primary" href="{{ route('warga.show', $item->id) }}" title="Detail"><i class="ion-ios-information-outline"></i></a>

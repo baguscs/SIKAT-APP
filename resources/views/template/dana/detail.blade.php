@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Total</label>
-                            <input type="text" name="total" id="total" class="form-control" value="" data-name="{{ $dana->total }}" required>
+                            <input type="text" name="total" id="total" class="form-control" value="" data-name="{{ $dana->total }}" required readonly>
                             <div class="invalid-feedback">Totalnya berapa?</div>
                         </div>
                         <div class="form-group">

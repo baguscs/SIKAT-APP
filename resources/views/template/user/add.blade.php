@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" required name="tempat">
+                            <input type="password" class="form-control" required name="password">
                             <div class="invalid-feedback">Passwordnya apa?</div>
                         </div>
                         <div class="form-group">

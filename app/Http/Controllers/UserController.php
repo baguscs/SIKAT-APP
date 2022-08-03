@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $titlePage = "Pengguna";
         $navigation = "active";
-        $dataUser = User::where('id', '!=', Auth::user()->id);
+        $dataUser = User::where('id', '!=', Auth::user()->id)->get();
         return view('template.user.index', compact('titlePage', 'navigation', 'dataUser'));
     }
 
