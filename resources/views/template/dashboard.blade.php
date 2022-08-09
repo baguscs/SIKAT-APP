@@ -47,7 +47,7 @@
                                 <h4>Total Warga</h4>
                             </div>
                             <div class="card-body">
-                                1,201
+                                {{ $totalWarga }}
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Aduan;
 use App\Models\Agenda;
 use App\Models\Dana;
+use App\Models\Warga;
+use App\Models\Anggota_Keluarga;
 
 class DashboardController extends Controller
 {
@@ -27,6 +29,9 @@ class DashboardController extends Controller
         foreach ($spending as $item) {
             $outlay += $item->total;
         }
-        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan', 'agenda', 'inflow', 'outlay'));
+        $warga = Warga::all()->count();
+        $family = Anggota_Keluarga::all()->count();
+        $totalWarga = $warga + $family;
+        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan', 'agenda', 'inflow', 'outlay', 'totalWarga'));
     }
 }

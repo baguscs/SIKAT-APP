@@ -101,4 +101,9 @@ class AuthController extends Controller
             return redirect()->back()->with('pesan', 'Maaf Password Lama yang anda masukkan salah');
         }
     }
+
+    public function unauthorizaed()
+    {
+        return view('template.error.user_off');
+    }
 }

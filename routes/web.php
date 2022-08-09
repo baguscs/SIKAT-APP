@@ -32,11 +32,13 @@ Route::get('form-forgot/{id}', [AuthController::class, 'form_forgot'])->name('fo
 Route::post('form-forgot/post/{id}', [AuthController::class, 'execute_forgot'])->name('execute_forgot');
 
 Route::get('LogoutSystem', [AuthController::class, 'logout'])->name('logoutSystem');
+Route::get('Error401', [AuthController::class, 'unauthorizaed'])->name('error.401');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'account'
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
