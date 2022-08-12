@@ -32,6 +32,16 @@ class DashboardController extends Controller
         $warga = Warga::all()->count();
         $family = Anggota_Keluarga::all()->count();
         $totalWarga = $warga + $family;
-        return view('template.dashboard', compact('titlePage', 'navigation', 'totalAduan', 'aduan', 'agenda', 'inflow', 'outlay', 'totalWarga'));
+        return view('template.dashboard', compact(
+                                            'titlePage', 
+                                            'navigation', 
+                                            'totalAduan', 
+                                            'aduan', 
+                                            'agenda', 
+                                            'inflow', 
+                                            'outlay', 
+                                            'totalWarga'
+                                        )
+        );
     }
 }

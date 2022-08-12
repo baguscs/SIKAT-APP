@@ -2560,7 +2560,7 @@ a.dropdown-item.active {
     font-weight: 600;
 }
 .dropdown-list .dropdown-list-content {
-    height: 350px;
+    height: 358px;
     overflow: hidden;
 }
 .dropdown-list .dropdown-list-content:not(.is-end):after {

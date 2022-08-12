@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 </head>
+@php
+    $userDie = DB::table('users')->where('status', 'mati')->count();
+    $reviewReport = DB::table('aduans')->where('status', 'ditinjau')->count();
+    $responReport = DB::table('aduans')->where('status', 'diterima')->count();
+@endphp
 <body>
     <div id="app">
         {{-- navigation --}}
@@ -32,61 +37,47 @@
             <ul class="navbar-nav navbar-right">
             <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
                 <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Notifications
-                    <div class="float-right">
-                    <a href="#">Mark All As Read</a>
+                    <div class="dropdown-header">Notifications</div>
+                    <div class="dropdown-list-content dropdown-list-icons">
+                        @if ($userDie > 0)
+                            <a href="{{ route('users.index') }}" class="dropdown-item">
+                                <div class="dropdown-item-icon bg-warning text-white">
+                                    <i class="far fa-user" style="margin-top: 10px"></i>
+                                </div>
+                                <div class="dropdown-item-desc">
+                                    Terdapat {{ $userDie }} Pengguna non-aktif!
+                                </div>
+                            </a>
+                        @endif
+                        @if ($reviewReport > 0)
+                            <a href="{{ route('aduan.index') }}" class="dropdown-item">
+                                <div class="dropdown-item-icon bg-danger text-white">
+                                    <i class="far fa-file-alt" style="margin-top: 10px"></i>
+                                </div>
+                                <div class="dropdown-item-desc">
+                                    {{ $reviewReport }} Aduan Perlu ditinjau!
+                                </div>
+                            </a>
+                        @endif
+                        @if ($responReport > 0)
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-item-icon bg-info text-white">
+                                    <i class="far fa-file-alt" style="margin-top: 10px"></i>
+                                </div>
+                                <div class="dropdown-item-desc">
+                                    {{ $responReport }} Aduan Perlu ditanggapi!
+                                </div>
+                            </a>
+                        @endif
+                        <a href="#" class="dropdown-item">
+                        <div class="dropdown-item-icon bg-success text-white">
+                            <i class="fas fa-bell" style="margin-top: 10px"></i>
+                        </div>
+                        <div class="dropdown-item-desc">
+                            Selamat Datang Di SIKAT (Sistem Informasi Kampung Digital)
+                        </div>
+                        </a>
                     </div>
-                </div>
-                <div class="dropdown-list-content dropdown-list-icons">
-                    <a href="#" class="dropdown-item dropdown-item-unread">
-                    <div class="dropdown-item-icon bg-primary text-white">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Template update is available now!
-                        <div class="time text-primary">2 Min Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-info text-white">
-                        <i class="far fa-user"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        <b>You</b> and <b>Dedik Sugiharto</b> are now friends
-                        <div class="time">10 Hours Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-success text-white">
-                        <i class="fas fa-check"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                        <div class="time">12 Hours Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-danger text-white">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Low disk space. Let's clean it!
-                        <div class="time">17 Hours Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-info text-white">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Welcome to Stisla template!
-                        <div class="time">Yesterday</div>
-                    </div>
-                    </a>
-                </div>
-                <div class="dropdown-footer text-center">
-                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-                </div>
                 </div>
             </li>
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
