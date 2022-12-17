@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('super_admin'),
             'jabatans_id' => 1,
             'wargas_id' => 1,
+            'status' => "aktif",
         ]);
     }
 }

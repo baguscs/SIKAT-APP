@@ -22,16 +22,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link nav-menu" href="#home">Beranda</a>
+                <a class="nav-link nav-menu" href="#about">Informasi Umum</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-menu" href="#about">Tentang Kami</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-menu" href="#faq">FAQ</a>
+                <a class="nav-link nav-menu" href="#aduan">Aduan</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link nav-menu" href="#agenda">Agenda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-menu" href="#dana">Dana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-menu" href="#faq">FAQ</a>
               </li>
             </ul>
             <button type="button" class="btn-login"><a class="btn-href" href="{{ route('loginPage') }}">Login</a></button>
@@ -39,13 +42,14 @@
         </div>
       </nav>
     </div>
-    <a href="#home" type="button" id="btn-up" class="btn-up"><img src="{{ asset('img/up.png') }}" alt="" width="30" class="img-up"></a>
+    <a href="#" onclick="goTop()" type="button" id="btn-up" class="btn-up"><img src="{{ asset('img/up.png') }}" alt="" width="30" class="img-up"></a>
     <div class="container">
       <section class="home" id="home">
         <div class="row row-home">
           <div class="col-xl-7">
             <h1 class="title-home">SIKAT</h1>
-            <p class="desc-home">Here at flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+            <p class="desc-home">Hi, Selamat Datang di Sistem Informasi Kampung Digital</p>
+            <p class="desc-home-alt">Sebuah inovasi anak bangsa untuk kemajuan kampung, di era digital</p>
             <button type="button" class="btn-login"><a class="btn-href" href="{{ route('loginPage') }}">Login</a></button>
           </div>
           <div class="col-xl-5">
@@ -60,32 +64,98 @@
         <div class="row about-row">
           <div class="col-xl-6">
             <h1 class="title-about">Apa itu SIKAT?</h1>
-            <p class="desc-about">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.</p>
+            <p class="desc-about">SIKAT (Sistem Informasi Kampung Digital) adalah aplikasi untuk membantu masyarakat  dalam pengembangan tempat tinggalnya. SIKAT (Sistem Informasi Kampung Digital) Mempunyai beberapa fitur yaitu:</p>
             <div class="fitur-menu">
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur"> Bantuan Sosial</p> 
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur"> Agenda</p> 
               <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur"> Aduan Warga</p> 
+              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur"> Agenda Desa</p> 
+              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur"> Dana Desa</p> 
             </div>
-            <p class="desc-about end-content-about">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.</p>
           </div>
           <div class="col-xl-6">
-            <img src="{{ asset('img/bro.png') }}" alt="" class="img-about">
+            <img src="{{ asset('img/amico2.png') }}" alt="" class="img-about">
           </div>
         </div>
         <div class="row benefit-row">
           <div class="col-xl-6">
-            <img src="{{ asset('img/amico2.png') }}" alt="" class="img-about" width="530">
+            <img src="{{ asset('img/bro.png') }}" alt="" class="img-about" width="530">
           </div>
           <div class="col-xl-6">
             <h1 class="title-about">Apa manfaat SIKAT?</h1>
-            <p class="desc-about">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.</p>
+            <p class="desc-about">SIKAT (Sistem Informasi Kampung Digital) dibuat berdasarkan kebutuhan masyarakat, dengan adanya SIKAT masyarakat dapat memanfaatkan fitur-fitur yang ada di SIKAT</p>
             <div class="fitur-menu">
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Dynamic reports and dashboards</p> 
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Templates for everyone</p> 
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Development workflow</p> 
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Limitless business automation</p> 
-              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Knowledge management</p> 
+              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Mudah digunakan</p> 
+              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Akses informasi lebih cepat</p> 
+              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Memudahkan masyarakat untuk melihat data aliran dana desa</p> 
+              <p class="fitur-item"><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"> Manajemen lebih terkontrol</p> 
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="aduan" id="aduan">
+      <div class="container aduan">
+        <div class="row">
+          <div class="col-xl-6">
+            <div class="container">
+              <h1 class="title-aduan">Aduan Warga</h1>
+              <div class="desc-aduan">
+                Aduan Warga dapat digunakan secara mandiri oleh warga desa untuk menyampaikan keluhan dan aspirasinya. Dengan semakin terbukanya ruang informasi, maka pola komunikasi dua arah antara perangkat desa dan masyarakat harus tersusun melalui sebuah sistem yang baik. Hal ini dilakukan untuk meminimalisir gesekan akibat perbedaan pemahaman atas informasi yang tersampaikan.
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <img src="{{ asset('img/Feedback-amico.png') }}" width="530" alt="" class="img-aduan">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6">
+            <h1 class="title-aduan-alt">Syarat Aduan yang ditanggapi</h1>
+             <div class="fitur-menu">
+               <p><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"><span class="rule-aduan"> Identitas Warga Desa Jelas</span></p> 
+               <p><img src="{{ asset('img/checklist.png') }}" alt="" class="img-fitur-benefit"><span class="rule-aduan"> Menyertakan bukti yang mendukung Pengaduan yang disampaikan</span></p> 
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <h1 class="title-aduan-alt">Manfaat Aduan Warga</h1>
+            <div class="desc-benefit-aduan">Aduan Warga bermanfaat untuk memudahkan masyarakat sehingga masyarakat tidak perlu menunggu perangkat desa. Masyarakat cukup melakukan laporan aduan pada website SIKAT agar dapat menyalurkan aspirasi serta keluhan pada perangkat desa setempat.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="agenda" id="agenda">
+      <div class="container agenda">
+        <div class="row">
+          <div class="col-xl-6">
+            <h1 class="title-agenda">Agenda Desa</h1>
+            <div class="desc-agenda">
+              Agenda Desa dapat digunakan  untuk melihat jadwal Agenda Desa. Warga Desa tidak perlu lagi untuk bertanya kepada perangkat desa tentang kegiatan apa yang akan diadakan di desa. Warga Desa bisa langsung melihat Agenda Desa di website SIKAT 
+            </div> 
+            <h1 class="title-agenda">Manfaat Agenda Desa</h1>
+            <div class="desc-agenda">
+              Agenda Desa bermanfaat untuk masyarakat tidak perlu menunggu perangkat desa. Masyarakat cukup melakukan laporan aduan pada website SIKAT agar dapat menyalurkan aspirasi serta keluhan pada perangkat desa setempat.
+            </div>
+          </div>
+          <div class="col-xl-6">
+            <img src="{{ asset('img/Schedule-amico.png') }}" width="530" alt="" class="img-agenda">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="dana" id="dana">
+      <div class="container dana">
+        <div class="row">
+          <div class="col-xl-6">
+            <img src="{{ asset('img/Spreadsheets-pana.png') }}" width="530" alt="" class="img-dana">
+          </div>
+          <div class="col-xl-6">
+            <h1 class="title-dana">Dana Desa</h1>
+             <div class="desc-dana">
+              Dana Desa adalah fitur yang digunakan untuk melihat data transparansi pengelolaan desa. 
+            </div>
+            <h1 class="title-dana-alt">Manfaat Dana Desa</h1>
+             <div class="desc-dana">
+             Dengan adanya fitur melihat aliran dana desa, diharapkan terciptanya transparansi pengelolaan desa yang sehat, dan masyarakat tak perlu khawatir terhadap pengelolaan desa yang semena-mena. Warga juga dapat melihat transparansi pengelolaan desa tanpa perlu lagi menggunakan metode yang manual. 
+            </div> 
           </div>
         </div>
       </div>
@@ -99,84 +169,53 @@
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  Lorem ipsum dolor sit amet?
+                 Apa keuntungan menggunakan SIKAT?
                 </button>
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <p class="text-faq">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat illum fuga voluptatibus earum rem velit quibusdam architecto nobis expedita eius id deleniti vel porro eveniet, magni pariatur voluptatum quia non!</p>
+                  <p class="text-faq">Dengan bergabung bersama SIKAT maka segala urusan Aduan Warga, Agenda Desa, dan Aliran Dana Desa,  dapat diakses dengan mudah oleh perangkat desa maupun warga desa.</p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  Lorem ipsum dolor sit amet?
+                  Bagaimana cara menulis aduan?
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <p class="text-faq">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic ex expedita sequi nesciunt vel vitae aliquam quisquam reiciendis iure animi, quidem magnam beatae tempora earum corrupti dignissimos natus cupiditate. Commodi!</p>
+                  <p class="text-faq">Silahkan mengisi formulir untuk pengaduan anda, sematkan bukti aduan untuk mendukung aduan anda segera diproses</p>
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Lorem ipsum dolor sit amet?
+                  Apakah ada syarat khusus untuk menggunakan layanan website ini?
                 </button>
               </h2>
               <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <p class="text-faq">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, iste porro amet consectetur incidunt nisi at qui nesciunt a recusandae pariatur ducimus similique saepe fugiat assumenda nam sit officiis tempora.</p>
+                  <p class="text-faq">Syarat untuk dapat menggunakan layanan ini anda harus terdaftar sebagai warga kampung yang didata oleh ketua RW setempat</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Bagaimana cara daftar akun di SIKAT?
+                </button>
+              </h2>
+              <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <p class="text-faq">Segera lapor ke ketua RW setempat agar anda segera dibuatkan akun untuk dapat menggakses website SIKAT dan merasakan mafaatnya</p>
                 </div>
               </div>
             </div>
           </div>
         </center>
-      </div>
-    </section>
-    <section class="agenda" id="agenda">
-      <br><br><br>
-      <div class="head-agenda">
-        <h1 class="title-agenda">Agenda Hari Ini</h1>
-        <p class="desc-agenda">Here at flowbite we focus on markets where technology, innovation, and capital 
-          <br>can unlock long-term value and drive economic growth.
-        </p>
-      </div>
-      <div class="container">
-        <div class="row card-agenda">
-          <div class="col-xl-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Agenda 1</h5>
-                <p class="desc-item">Diterbitkan pada 7 Juli 2022 oleh John Doe</p>
-                <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque enim odit quo eum perferendis, voluptas sunt a incidunt minus similique error fugiat tempora sint repudiandae numquam. Facilis, ipsam. Odio, animi.</p>
-                <a href="#" class="btn-item-agenda"><span class="animate-agenda">Lihat Detail</span></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Agenda 2</h5>
-                <p class="desc-item">Diterbitkan pada 7 Juli 2022 oleh John Doe</p>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, quos placeat magni cupiditate numquam suscipit repellat error. Consequatur mollitia labore, dolores porro eligendi temporibus, iste incidunt maxime, ex itaque magnam?</p>
-                <a href="#" class="btn-item-agenda"><span class="animate-agenda">Lihat Detail</span></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Agenda 3</h5>
-                <p class="desc-item">Diterbitkan pada 7 Juli 2022 oleh John Doe</p>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos aperiam, tempore atque reiciendis non voluptates possimus odio ipsa placeat quam necessitatibus mollitia. Tenetur accusamus ipsa corporis voluptatum, recusandae veritatis ea.</p>
-                <a href="#" class="btn-item-agenda"><span class="animate-agenda">Lihat Detail</span></a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
     <section class="footer">

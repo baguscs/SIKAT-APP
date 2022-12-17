@@ -25,6 +25,15 @@ a.nav-brand-scroll {
     margin-left: 80px;
     margin-top: 5px;
 }
+
+a.nav-brand-scroll:hover {
+    color: #ffff;
+    font-weight: 600;
+    font-size: 24px;
+    margin-left: 80px;
+    margin-top: 5px;
+    color: #ffffff;
+}
 .img-icon {
     margin-right: 8px;
 }
@@ -35,6 +44,11 @@ a.nav-menu {
     margin-left: 12px;
     margin-right: 12px;
 }
+
+a.nav-menu:hover {
+    color: #00a187;
+}
+
 a.nav-menu-scroll {
     font-weight: 500;
     font-size: 16px;
@@ -42,6 +56,11 @@ a.nav-menu-scroll {
     margin-left: 12px;
     margin-right: 12px;
 }
+
+a.nav-menu-scroll:hover {
+    color: #ffffff;
+}
+
 .btn-login {
     background: #064e3b;
     color: #ffff;
@@ -89,7 +108,7 @@ li:hover::after {
     background: #048772;
     border-radius: 8px;
     position: fixed;
-    top: 500px;
+    top: 530px;
     right: 10px;
     display: none;
 }
@@ -119,6 +138,12 @@ li:hover::after {
     font-size: 20px;
     color: #6b7280;
 }
+.desc-home-alt {
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: -20px;
+    color: #6b7280;
+}
 .img-home {
     margin-top: 20px;
     margin-left: 20px;
@@ -136,12 +161,13 @@ li:hover::after {
     font-weight: 400;
     font-size: 20px;
     color: #6b7280;
+    margin-top: 30px;
 }
 .img-about {
-    margin-top: 40px;
+    margin-top: -20px;
 }
 .fitur-menu {
-    margin-top: 60px;
+    margin-top: 30px;
 }
 .fitur-item {
     margin-bottom: 16px;
@@ -160,9 +186,6 @@ li:hover::after {
 }
 .benefit-row {
     margin-bottom: 30px;
-}
-.img-fitur-benefit {
-    margin-bottom: 15px;
 }
 
 .title-faq {
@@ -187,20 +210,33 @@ li:hover::after {
     color: #6b7280;
     text-align: left;
 }
-.title-agenda {
+
+.aduan {
+    margin-top: 80px;
+}
+
+.title-aduan {
     font-weight: 800;
     font-size: 36px;
     color: #111928;
-    text-align: center;
+    margin-top: 80px;
 }
-.desc-agenda {
+
+.title-aduan-alt {
+    font-weight: 800;
+    font-size: 25px;
+    color: #111928;
+    margin-top: 20px;
+}
+
+.desc-aduan {
     font-weight: 400;
     font-size: 20px;
     color: #6b7280;
-    text-align: center;
+    margin-top: 40px;
 }
-.head-agenda {
-    margin-bottom: 40px;
+.head-aduan {
+    margin-top: 40px;
 }
 .card-title {
     font-weight: 600;
@@ -217,43 +253,7 @@ li:hover::after {
 .card-text {
     margin-top: 20px;
 }
-.btn-item-agenda {
-    background: #064e3b;
-    border-radius: 8px;
-    width: 900px;
-    height: 41px;
-    padding: 10px 120px;
-    color: #ffff;
-    text-decoration: none;
-}
-.btn-item-agenda .animate-agenda {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
 
-.btn-item-agenda .animate-agenda:after {
-    content: "\00bb";
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.btn-item-agenda:hover .animate-agenda {
-    padding-right: 14px;
-    color: #ffff;
-}
-
-.btn-item-agenda:hover .animate-agenda:after {
-    opacity: 1;
-    right: 0;
-}
-.agenda {
-    margin-bottom: 100px;
-}
 .footer {
     background: #064e3b;
 }
@@ -271,4 +271,71 @@ li:hover::after {
     font-size: 16px;
     color: #ffff;
     margin-bottom: 50px;
+}
+
+.img-aduan {
+    margin-left: 40px;
+}
+
+.rule-aduan {
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #111928;
+    padding-left: 10px;
+}
+
+.desc-benefit-aduan {
+    font-weight: 400;
+    font-size: 15px;
+    color: #6b7280;
+    margin-top: 20px;
+}
+
+.agenda {
+    margin-top: 40px;
+}
+
+.title-agenda {
+    font-weight: 800;
+    font-size: 36px;
+    color: #111928;
+    margin-top: 80px;
+}
+
+.desc-agenda {
+    font-weight: 400;
+    font-size: 20px;
+    color: #6b7280;
+    margin-top: 30px;
+}
+
+.img-agenda {
+    margin-left: 40px;
+    margin-top: 70px;
+}
+
+.dana {
+    margin-top: 30px;
+}
+
+.title-dana {
+    font-weight: 800;
+    font-size: 36px;
+    color: #111928;
+    margin-top: 80px;
+}
+
+.desc-dana {
+    font-weight: 400;
+    font-size: 20px;
+    color: #6b7280;
+    margin-top: 20px;
+}
+
+.title-dana-alt {
+    font-weight: 800;
+    font-size: 36px;
+    color: #111928;
+    margin-top: 30px;
 }

@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     var btn = document.getElementById("btn-up");
     window.addEventListener("scroll", function () {
-        btn.classList.toggle("show", window.scrollY > 200);
+        btn.classList.toggle("show", window.scrollY > 100);
     });
 
     $(".scroll-spy").scrollSpy({
@@ -28,4 +28,9 @@ $(document).ready(function () {
         offsetElement: ".header",
         ignoreAnchors: [".not"],
     });
+
+    function goTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 });
