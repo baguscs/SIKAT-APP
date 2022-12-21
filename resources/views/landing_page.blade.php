@@ -7,6 +7,7 @@
     <link rel="icon" href="{{ asset('img/icon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
     <div class="header">
@@ -46,13 +47,13 @@
     <div class="container">
       <section class="home" id="home">
         <div class="row row-home">
-          <div class="col-xl-7">
+          <div class="col-xl-7" data-aos="fade-right" data-aos-duration="1500">
             <h1 class="title-home">SIKAT</h1>
             <p class="desc-home">Hi, Selamat Datang di Sistem Informasi Kampung Digital</p>
             <p class="desc-home-alt">Sebuah inovasi anak bangsa untuk kemajuan kampung, di era digital</p>
             <button type="button" class="btn-login"><a class="btn-href" href="{{ route('loginPage') }}">Login</a></button>
           </div>
-          <div class="col-xl-5">
+          <div class="col-xl-5" data-aos="fade-up" data-aos-duration="1500">
             <img class="img-home" src="{{ asset('img/amico.png') }}" alt="">
           </div>
         </div>
@@ -62,7 +63,7 @@
       <br><br>
       <div class="container">
         <div class="row about-row">
-          <div class="col-xl-6">
+          <div class="col-xl-6" data-aos="fade-up-right" data-aos-duration="1500">
             <h1 class="title-about">Apa itu SIKAT?</h1>
             <p class="desc-about">SIKAT (Sistem Informasi Kampung Digital) adalah aplikasi untuk membantu masyarakat  dalam pengembangan tempat tinggalnya. SIKAT (Sistem Informasi Kampung Digital) Mempunyai beberapa fitur yaitu:</p>
             <div class="fitur-menu">
@@ -76,7 +77,7 @@
           </div>
         </div>
         <div class="row benefit-row">
-          <div class="col-xl-6">
+          <div class="col-xl-6" data-aos="flip-left" data-aos-duration="1500">
             <img src="{{ asset('img/bro.png') }}" alt="" class="img-about" width="530">
           </div>
           <div class="col-xl-6">
@@ -103,7 +104,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-6">
+          <div class="col-xl-6" data-aos="flip-down" data-aos-duration="1500">
             <img src="{{ asset('img/Feedback-amico.png') }}" width="530" alt="" class="img-aduan">
           </div>
         </div>
@@ -135,7 +136,7 @@
               Agenda Desa bermanfaat untuk masyarakat tidak perlu menunggu perangkat desa. Masyarakat cukup melakukan laporan aduan pada website SIKAT agar dapat menyalurkan aspirasi serta keluhan pada perangkat desa setempat.
             </div>
           </div>
-          <div class="col-xl-6">
+          <div class="col-xl-6" data-aos="zoom-in-up" data-aos-duration="1500">
             <img src="{{ asset('img/Schedule-amico.png') }}" width="530" alt="" class="img-agenda">
           </div>
         </div>
@@ -144,7 +145,7 @@
     <section class="dana" id="dana">
       <div class="container dana">
         <div class="row">
-          <div class="col-xl-6">
+          <div class="col-xl-6" data-aos="zoom-in-right" data-aos-duration="1500">
             <img src="{{ asset('img/Spreadsheets-pana.png') }}" width="530" alt="" class="img-dana">
           </div>
           <div class="col-xl-6">
@@ -232,5 +233,9 @@
     <script src="{{ asset('js/jquery.scrollspy.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>
