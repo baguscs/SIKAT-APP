@@ -46,7 +46,7 @@
                                                     <td>{{ $item->nik }}</td>
                                                     <td>{{ $anggota }}</td>
                                                     <td>
-                                                        @if ($item->akun == 'terdaftar')
+                                                        @if ($item->akun == 'Aktif')
                                                             <div class="badge badge-success">Aktif</div>
                                                         @else
                                                             <div class="badge badge-danger">Mati</div>

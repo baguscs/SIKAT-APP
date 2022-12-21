@@ -146,7 +146,7 @@
                         <div class="form-group">
                             <label>No Kartu Keluarga</label>
                             <input type="number" class="form-control" required name="no_kk">
-                            <input type="text" name="akun" value="no" id="" hidden>
+                            <input type="text" name="akun" value="Aktif" id="" hidden>
                             <div class="invalid-feedback">Nomor Kartu Keluarganya berapa?</div>
                         </div>
                     </div>

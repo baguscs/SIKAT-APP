@@ -143,12 +143,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>No Kartu Keluarga</label>
-                            <input type="number" class="form-control" required name="no_kk" value="{{ $warga->no_kk }}">
-                            <input type="text" name="akun" value="{{ $warga->akun }}" id="" hidden>
-                            <div class="invalid-feedback">Nomor Kartu Keluarganya berapa?</div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>No Kartu Keluarga</label>
+                                    <input type="number" class="form-control" required name="no_kk" value="{{ $warga->no_kk }}">
+                                    <div class="invalid-feedback">Nomor Kartu Keluarganya berapa?</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Akun</label>
+                                    <select class="form-control required" name="akun" required>
+                                        <option selected disabled hidden value="">Silahkan Pilih</option>
+                                        <option value="Aktif" {{ $warga->akun == "Aktif" ? 'selected' : '' }}>Aktif</option>
+                                        <option value="Mati" {{ $warga->akun == "Mati" ? 'selected' : '' }}>Mati</option>
+                                    </select>
+                                    <div class="invalid-feedback">Status akunnya apa?</div>
+                                </div>
+                            </div>
                         </div>
+                        
                     </div>
                     <div class="card-footer text-right">
                       <button type="submit" class="btn btn-primary">Submit</button>
